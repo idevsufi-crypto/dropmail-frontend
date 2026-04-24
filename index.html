@@ -105,7 +105,12 @@
   .inbox-empty-state h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
   .inbox-empty-state p { font-size: 14px; }
 
-  .mail-row { border-bottom: 1px solid var(--border); overflow: hidden; }
+  .mail-row.new-mail { background: rgba(108,99,255,0.06); border-left: 3px solid var(--accent2); }
+  .mail-row.new-mail .mail-from { color: var(--accent2); }
+  .mail-row.new-mail .mail-subject { color: var(--text); font-weight: 600; }
+  .mail-row.new-mail .mail-avatar { background: linear-gradient(135deg, #a78bfa, #c4b5fd); box-shadow: 0 0 14px rgba(167,139,250,0.5); }
+  .new-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 99px; margin-left: 6px; letter-spacing: 0.05em; vertical-align: middle; animation: badgePulse 1.5s infinite; }
+  @keyframes badgePulse { 0%,100%{opacity:1;} 50%{opacity:0.6;} }
   .mail-row:last-child { border-bottom: none; }
   .mail-row-header { display: flex; align-items: center; gap: 14px; padding: 1rem 1.25rem; cursor: pointer; transition: background 0.15s; }
   .mail-row-header:hover { background: var(--surface2); }
@@ -355,7 +360,7 @@ async function refreshInbox() {
     const d = await r.json();
     if (d && d.emails && d.emails.length) {
       let newIds = [];
-      d.emails.forEach(m => { if (!mails.find(x => x.mail_id === m.mail_id)) { mails.unshift(m); newIds.push(m.mail_id); } });
+      d.emails.forEach(m => { if (!mails.find(x => x.mail_id === m.mail_id)) { mails.unshift(m); newIds.push(m.mail_id); newMailIds.add(m.mail_id); } });
       seqNum = d.count || seqNum;
       renderInbox(mails);
       saveSession();
@@ -375,6 +380,7 @@ async function refreshInbox() {
 }
 
 let mailData = {}; // mail content cache
+let newMailIds = new Set(); // naye emails track karo
 
 // ===== TOGGLE MAIL (open/close) =====
 function toggleMail(id) {
@@ -422,6 +428,15 @@ async function loadMail(id) {
     // Cache karo
     mailData[id] = { from: d.from||'', subject: d.subject||'', date: d.date||'', html: displayHtml };
 
+    // NEW badge hatao jab open ho
+    newMailIds.delete(id);
+    const row = document.getElementById('row-' + id);
+    if (row) {
+      row.classList.remove('new-mail');
+      const badge = row.querySelector('.new-badge');
+      if (badge) badge.remove();
+    }
+
     bodyEl.querySelector('.meta-from').textContent    = d.from    || '';
     bodyEl.querySelector('.meta-subject').textContent = d.subject || '';
     bodyEl.querySelector('.meta-date').textContent    = d.date    || '';
@@ -442,16 +457,17 @@ function renderInbox(list) {
     return;
   }
   el.innerHTML = list.map(m => {
-    const init = (m.mail_from || '?').substring(0,2).toUpperCase();
-    // Pehle se open hai toh open raho
+    const init   = (m.mail_from || '?').substring(0,2).toUpperCase();
+    const isNew  = newMailIds.has(m.mail_id);
+    // Sirf loaded wali open rahe — new wali loadMail ke baad open hogi
     const isOpen = openStates[m.mail_id] === 'loaded';
     return `
-      <div class="mail-row">
+      <div class="mail-row ${isNew ? 'new-mail' : ''}" id="row-${m.mail_id}">
         <div class="mail-row-header" onclick="toggleMail('${m.mail_id}')">
           <div class="mail-avatar">${init}</div>
           <div class="mail-info">
             <div class="mail-from-line">
-              <span class="mail-from">${esc(m.mail_from||'Unknown')}</span>
+              <span class="mail-from">${esc(m.mail_from||'Unknown')}${isNew ? '<span class="new-badge">NEW</span>' : ''}</span>
               <span class="mail-date">${esc(m.mail_date||'')}</span>
             </div>
             <div class="mail-subject">${esc(m.mail_subject||'(No subject)')}</div>
@@ -481,7 +497,7 @@ function requestNotifPermission() {
 
 function sendDesktopNotif(from, subject) {
   if (!('Notification' in window) || Notification.permission !== 'granted') return;
-  const notif = new Notification('📬 DropMail — Naya Email!', {
+  const notif = new Notification('📬 DropMail — New Email!', {
     body: `From: ${from}\n${subject}`,
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236c63ff'/><text y='.9em' font-size='70' x='12'>📬</text></svg>",
     badge: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236c63ff'/><text y='.9em' font-size='70' x='12'>📬</text></svg>",
