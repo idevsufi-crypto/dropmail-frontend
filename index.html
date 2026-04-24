@@ -360,7 +360,13 @@ async function refreshInbox() {
     const d = await r.json();
     if (d && d.emails && d.emails.length) {
       let newIds = [];
-      d.emails.forEach(m => { if (!mails.find(x => x.mail_id === m.mail_id)) { mails.unshift(m); newIds.push(m.mail_id); newMailIds.add(m.mail_id); } });
+      d.emails.forEach(m => {
+        if (!mails.find(x => x.mail_id === m.mail_id)) {
+          // Hide Guerrilla Mail system emails
+          if ((m.mail_from || '').toLowerCase().includes('guerrillamail.com')) return;
+          mails.unshift(m); newIds.push(m.mail_id); newMailIds.add(m.mail_id);
+        }
+      });
       seqNum = d.count || seqNum;
       renderInbox(mails);
       saveSession();
