@@ -371,8 +371,6 @@ async function refreshInbox() {
           const mail = mails.find(m => m.mail_id === id);
           if (mail) sendDesktopNotif(mail.mail_from || 'Unknown', mail.mail_subject || '(No subject)');
         });
-        // Auto-open new emails only
-        newIds.forEach(id => setTimeout(() => loadMail(id), 300));
       }
     }
   } catch(e) {}
