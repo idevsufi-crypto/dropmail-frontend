@@ -433,11 +433,7 @@ async function generateNew() {
   document.getElementById('statusText').textContent   = 'Connecting...';
   renderInbox([]);
   try {
-    const username = document.getElementById('usernameInput').value.trim();
-    const domain   = document.getElementById('domainSelect').value;
-    let url = `${API_BASE}/api/email`;
-    if (username) url += `?username=${encodeURIComponent(username)}&domain=${encodeURIComponent(domain)}`;
-    const d = await (await fetch(url)).json();
+    const d = await (await fetch(`${API_BASE}/api/email`)).json();
     currentEmail = d.email; sidToken = d.sid_token; seqNum = 0; seconds = 3600;
     document.getElementById('emailAddress').textContent = currentEmail;
     document.getElementById('statusText').textContent   = 'Inbox active — auto-refreshing every 5s';
