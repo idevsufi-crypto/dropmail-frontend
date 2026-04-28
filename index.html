@@ -471,12 +471,32 @@ async function refreshInbox() {
   btn.classList.remove('loading');
 }
 
-// ===== OPEN / TOGGLE MAIL =====
+// ===== OPEN / TOGGLE MAIL — ek waqt sirf ek open =====
 function toggleMail(id) {
   const bodyEl=document.getElementById('body-'+id), chevron=document.getElementById('chev-'+id);
   if (!bodyEl) return;
-  if (openStates[id]==='loaded') { const o=bodyEl.classList.toggle('open'); chevron&&chevron.classList.toggle('open',o); return; }
-  loadMail(id);
+
+  const isAlreadyOpen = bodyEl.classList.contains('open');
+
+  // Pehle sab band karo
+  closeAllMails();
+
+  // Agar pehle se open tha — sirf band kar do (toggle)
+  if (isAlreadyOpen) return;
+
+  // Ab is mail ko kholo
+  if (openStates[id]==='loaded') {
+    bodyEl.classList.add('open');
+    chevron&&chevron.classList.add('open');
+  } else {
+    loadMail(id);
+  }
+}
+
+// Sab mails band karo
+function closeAllMails() {
+  document.querySelectorAll('.mail-body-wrapper').forEach(el => el.classList.remove('open'));
+  document.querySelectorAll('.mail-chevron').forEach(el => el.classList.remove('open'));
 }
 async function loadMail(id) {
   const bodyEl=document.getElementById('body-'+id), chevron=document.getElementById('chev-'+id);
@@ -514,7 +534,7 @@ function renderInbox(list) {
   el.innerHTML=list.map(m=>{
     const init=(m.mail_from||'?').substring(0,2).toUpperCase();
     const isNew=newMailIds.has(m.mail_id);
-    const isOpen=openStates[m.mail_id]==='loaded';
+    openStates[m.mail_id] = ''; // hamesha closed render karo
     return `<div class="mail-row ${isNew?'new-mail':''}" id="row-${m.mail_id}">
       <div class="mail-row-header" onclick="toggleMail('${m.mail_id}')">
         <div class="mail-avatar">${init}</div>
@@ -525,14 +545,14 @@ function renderInbox(list) {
           </div>
           <div class="mail-subject">${esc(m.mail_subject||'(No subject)')}</div>
         </div>
-        <div class="mail-chevron ${isOpen?'open':''}" id="chev-${m.mail_id}">▶</div>
+        <div class="mail-chevron" id="chev-${m.mail_id}">▶</div>
       </div>
-      <div class="mail-body-wrapper ${isOpen?'open':''}" id="body-${m.mail_id}">
+      <div class="mail-body-wrapper" id="body-${m.mail_id}">
         <div class="mail-body-inner">
           <table class="mail-meta-table">
-            <tr><td>From</td><td class="meta-from">${isOpen&&mailData[m.mail_id]?esc(mailData[m.mail_id].from):''}</td></tr>
-            <tr><td>Subject</td><td class="meta-subject">${isOpen&&mailData[m.mail_id]?esc(mailData[m.mail_id].subject):''}</td></tr>
-            <tr><td>Date</td><td class="meta-date">${isOpen&&mailData[m.mail_id]?esc(mailData[m.mail_id].date):''}</td></tr>
+            <tr><td>From</td><td class="meta-from"></td></tr>
+            <tr><td>Subject</td><td class="meta-subject"></td></tr>
+            <tr><td>Date</td><td class="meta-date"></td></tr>
           </table>
           <div class="mail-body-content">${isOpen&&mailData[m.mail_id]?mailData[m.mail_id].html:'Click to load...'}</div>
         </div>
