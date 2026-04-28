@@ -472,31 +472,47 @@ async function refreshInbox() {
 }
 
 // ===== OPEN / TOGGLE MAIL — ek waqt sirf ek open =====
+let currentOpenId = null;
+
 function toggleMail(id) {
-  const bodyEl=document.getElementById('body-'+id), chevron=document.getElementById('chev-'+id);
+  const bodyEl  = document.getElementById('body-' + id);
+  const chevron = document.getElementById('chev-' + id);
   if (!bodyEl) return;
 
-  const isAlreadyOpen = bodyEl.classList.contains('open');
+  // Same mail click — band karo
+  if (currentOpenId === id) {
+    bodyEl.classList.remove('open');
+    chevron && chevron.classList.remove('open');
+    currentOpenId = null;
+    return;
+  }
 
-  // Pehle sab band karo
-  closeAllMails();
+  // Pehle wali band karo
+  if (currentOpenId) {
+    const prevBody = document.getElementById('body-' + currentOpenId);
+    const prevChev = document.getElementById('chev-' + currentOpenId);
+    prevBody && prevBody.classList.remove('open');
+    prevChev && prevChev.classList.remove('open');
+  }
 
-  // Agar pehle se open tha — sirf band kar do (toggle)
-  if (isAlreadyOpen) return;
-
-  // Ab is mail ko kholo
-  if (openStates[id]==='loaded') {
+  // Nai mail kholo
+  currentOpenId = id;
+  if (openStates[id] === 'loaded') {
     bodyEl.classList.add('open');
-    chevron&&chevron.classList.add('open');
+    chevron && chevron.classList.add('open');
   } else {
     loadMail(id);
   }
 }
 
-// Sab mails band karo
 function closeAllMails() {
-  document.querySelectorAll('.mail-body-wrapper').forEach(el => el.classList.remove('open'));
-  document.querySelectorAll('.mail-chevron').forEach(el => el.classList.remove('open'));
+  if (currentOpenId) {
+    const b = document.getElementById('body-' + currentOpenId);
+    const c = document.getElementById('chev-' + currentOpenId);
+    b && b.classList.remove('open');
+    c && c.classList.remove('open');
+    currentOpenId = null;
+  }
 }
 async function loadMail(id) {
   const bodyEl=document.getElementById('body-'+id), chevron=document.getElementById('chev-'+id);
@@ -531,10 +547,10 @@ function renderInbox(list) {
   const el=document.getElementById('inboxList');
   document.getElementById('mailCountBadge').textContent=list.length+' email'+(list.length!==1?'s':'');
   if (!list.length) { el.innerHTML=`<div class="inbox-empty-state"><div class="big-icon">📭</div><h3>Waiting for emails...</h3><p>Copy your address above and use it anywhere</p></div>`; return; }
+  currentOpenId = null;
   el.innerHTML=list.map(m=>{
     const init=(m.mail_from||'?').substring(0,2).toUpperCase();
     const isNew=newMailIds.has(m.mail_id);
-    openStates[m.mail_id] = ''; // hamesha closed render karo
     return `<div class="mail-row ${isNew?'new-mail':''}" id="row-${m.mail_id}">
       <div class="mail-row-header" onclick="toggleMail('${m.mail_id}')">
         <div class="mail-avatar">${init}</div>
