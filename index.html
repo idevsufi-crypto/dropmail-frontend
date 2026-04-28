@@ -80,20 +80,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1.25re
 .btn-primary:active{transform:scale(0.97);}
 .btn-ghost{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
 .btn-ghost:hover{color:var(--text);border-color:var(--border2);}
-.btn-qr{background:rgba(34,211,160,0.1);color:var(--success);border:1px solid rgba(34,211,160,0.2);}
-.btn-qr:hover{background:rgba(34,211,160,0.2);}
 .copied-toast{display:none;align-items:center;gap:6px;padding:8px 14px;background:rgba(34,211,160,0.1);border:1px solid rgba(34,211,160,0.25);color:var(--success);border-radius:var(--radius-sm);font-size:13px;font-weight:600;}
 .copied-toast.show{display:inline-flex;}
-
-/* QR MODAL */
-.qr-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:500;align-items:center;justify-content:center;}
-.qr-modal.show{display:flex;}
-.qr-box{background:var(--surface);border:1px solid var(--border2);border-radius:20px;padding:2rem;text-align:center;max-width:320px;width:90%;}
-.qr-box h3{font-size:16px;font-weight:700;margin-bottom:6px;}
-.qr-box p{font-size:13px;color:var(--muted);margin-bottom:1.5rem;}
-#qrCanvas{border-radius:12px;background:#fff;padding:12px;}
-.qr-close{margin-top:1.25rem;width:100%;padding:10px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--muted);cursor:pointer;font-family:var(--font);font-size:14px;}
-.qr-close:hover{color:var(--text);}
 
 /* STATUS */
 .status-bar{display:flex;align-items:center;justify-content:space-between;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 16px;font-size:13px;color:var(--muted);margin:0 auto 1.5rem;max-width:760px;}
@@ -111,13 +99,13 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1.25re
 .refresh-btn:hover{color:var(--text);border-color:var(--border2);}
 .refresh-btn.loading{animation:spin 0.7s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.inbox-list{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:16px;overflow:hidden;}
+.inbox-list{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:10px;padding:10px;}
 .inbox-empty-state{padding:4rem 2rem;text-align:center;color:#888;background:#f8f9fa;}
 .inbox-empty-state .big-icon{font-size:48px;margin-bottom:16px;opacity:0.5;}
 .inbox-empty-state h3{font-size:16px;font-weight:600;color:#333;margin-bottom:6px;}
 .inbox-empty-state p{font-size:14px;}
 
-.mail-row{border-bottom:1px solid #e8e8e8;overflow:hidden;background:#fafafa;}
+.mail-row{border-bottom:none;overflow:hidden;background:#fafafa;border-radius:10px;border:1px solid #e8e8e8;}
 .mail-row:last-child{border-bottom:none;}
 .mail-row.new-mail{background:#e8f5e9;border-left:4px solid #22c55e;}
 .mail-row.new-mail .mail-from{color:#15803d;}
@@ -219,16 +207,6 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);b
 <div class="orb orb-2"></div>
 <div class="notif" id="notif"></div>
 
-<!-- QR Modal -->
-<div class="qr-modal" id="qrModal">
-  <div class="qr-box">
-    <h3>📱 Scan on Mobile</h3>
-    <p>Scan this QR code to use this email on your phone</p>
-    <canvas id="qrCanvas"></canvas>
-    <button class="qr-close" onclick="document.getElementById('qrModal').classList.remove('show')">Close</button>
-  </div>
-</div>
-
 <div class="page">
   <nav>
     <div class="logo"><div class="logo-icon">📬</div>Drop<span>Mail</span></div>
@@ -274,21 +252,7 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);b
 
   <!-- Email Generator Card -->
   <div class="email-card">
-    <!-- Custom Username Row -->
-    <div class="card-label">Choose your email address</div>
-    <div class="username-row">
-      <input class="username-input" id="usernameInput" type="text" placeholder="yourname (or leave blank for random)" maxlength="40" oninput="this.value=this.value.replace(/[^a-zA-Z0-9._-]/g,'')">
-      <span class="username-sep">@</span>
-      <select class="domain-select" id="domainSelect">
-        <option value="guerrillamail.com">guerrillamail.com</option>
-        <option value="grr.la">grr.la</option>
-        <option value="guerrillamailblock.com">guerrillamailblock.com</option>
-        <option value="spam4.me">spam4.me</option>
-      </select>
-      <button class="generate-btn" onclick="generateNew()">⚡ Generate</button>
-    </div>
-
-    <div class="card-label" style="margin-top:1rem;">Your active address</div>
+    <div class="card-label">Your temporary address</div>
     <div class="email-display-row">
       <div class="email-icon">✉️</div>
       <div id="emailAddress">Generating your inbox...</div>
@@ -298,7 +262,10 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);b
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
         Copy Email
       </button>
-      <button class="btn btn-qr" onclick="showQR()">📱 QR Code</button>
+      <button class="btn btn-ghost" onclick="generateNew()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        New Address
+      </button>
       <div class="copied-toast" id="copiedToast">✓ Copied!</div>
     </div>
   </div>
@@ -329,9 +296,8 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);b
   <!-- Features -->
   <div class="features">
     <div class="feat-card"><div class="feat-icon">✏️</div><div class="feat-title">Custom Username</div><div class="feat-desc">Choose your own name — not just random gibberish.</div></div>
-    <div class="feat-card"><div class="feat-icon">📱</div><div class="feat-title">QR Code Share</div><div class="feat-desc">Scan QR on your phone — use same inbox everywhere.</div></div>
     <div class="feat-card"><div class="feat-icon">🔔</div><div class="feat-title">Desktop Alerts</div><div class="feat-desc">Get notified the moment a new email arrives.</div></div>
-    <div class="feat-card"><div class="feat-icon">🔄</div><div class="feat-title">Auto Refresh</div><div class="feat-desc">Inbox checks every 15 seconds automatically.</div></div>
+    <div class="feat-card"><div class="feat-icon">🔄</div><div class="feat-title">Auto Refresh</div><div class="feat-desc">Inbox checks every 5 seconds automatically.</div></div>
   </div>
 
   <!-- Why Us Comparison Table -->
@@ -349,12 +315,6 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);b
       <tbody>
         <tr>
           <td>Custom Username</td>
-          <td class="yes us-col">✓</td>
-          <td class="no">✗</td>
-          <td class="no">✗</td>
-        </tr>
-        <tr>
-          <td>QR Code Share</td>
           <td class="yes us-col">✓</td>
           <td class="no">✗</td>
           <td class="no">✗</td>
@@ -422,8 +382,6 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);b
   </footer>
 </div>
 
-<!-- QR Library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 const API_BASE  = 'https://dropmail-backend-production.up.railway.app';
 const STORE_KEY = 'dropmail_session';
@@ -585,16 +543,6 @@ function renderInbox(list) {
       </div>
     </div>`;
   }).join('');
-}
-
-// ===== QR CODE =====
-function showQR() {
-  if (!currentEmail) return;
-  const modal=document.getElementById('qrModal');
-  const canvas=document.getElementById('qrCanvas');
-  canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
-  modal.classList.add('show');
-  new QRCode(canvas,{text:'mailto:'+currentEmail,width:200,height:200,colorDark:'#000',colorLight:'#fff'});
 }
 
 // ===== COPY =====
