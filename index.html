@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DropMail — Free Temporary Email</title>
-<meta name="description" content="Free disposable temporary email. No signup. Instant inbox. Works on every website. Custom username support.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236c63ff'/><text y='.9em' font-size='70' x='12'>📬</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -35,85 +34,61 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1.25re
 .nav-links a{color:inherit;text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text);}
 
-/* TRUST BAR */
-.trust-bar{background:linear-gradient(90deg,rgba(108,99,255,0.12),rgba(167,139,250,0.08),rgba(108,99,255,0.12));border-bottom:1px solid rgba(108,99,255,0.2);padding:10px 2rem;text-align:center;font-size:13px;color:var(--muted);}
-.trust-bar span{margin:0 1.5rem;display:inline-flex;align-items:center;gap:6px;}
-.trust-bar strong{color:var(--text);}
-
 /* HERO */
-.hero{text-align:center;padding:4rem 2rem 2.5rem;max-width:720px;margin:0 auto;}
+.hero{text-align:center;padding:5rem 2rem 3rem;max-width:720px;margin:0 auto;}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.3);color:var(--accent2);font-size:12px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:6px 14px;border-radius:99px;margin-bottom:1.5rem;}
-.hero h1{font-size:clamp(2.2rem,6vw,3.8rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1rem;}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1rem;}
 .hero h1 .grad{background:linear-gradient(135deg,#6c63ff,#a78bfa,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero p{font-size:17px;color:var(--muted);line-height:1.7;max-width:500px;margin:0 auto 1.5rem;}
+.hero p{font-size:17px;color:var(--muted);line-height:1.7;max-width:500px;margin:0 auto 2.5rem;}
 
-/* LIVE COUNTER */
-.live-counter{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap;}
-.counter-item{text-align:center;}
-.counter-num{font-size:28px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:var(--mono);}
-.counter-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;}
-.counter-divider{width:1px;height:40px;background:var(--border2);}
-
-/* MAIN CARD */
+/* EMAIL CARD */
 .email-card{background:var(--surface);border:1px solid var(--border2);border-radius:20px;padding:2rem;margin:0 auto 1.5rem;max-width:760px;box-shadow:0 0 60px rgba(108,99,255,0.08),0 40px 80px rgba(0,0,0,0.4);animation:cardIn 0.6s cubic-bezier(0.16,1,0.3,1) both;}
 @keyframes cardIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-
-/* CUSTOM USERNAME INPUT */
-.username-row{display:flex;align-items:center;gap:0;margin-bottom:1rem;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;}
-.username-input{flex:1;background:transparent;border:none;outline:none;padding:0.9rem 1rem;font-family:var(--mono);font-size:15px;color:var(--text);}
-.username-input::placeholder{color:var(--muted);}
-.username-sep{color:var(--muted);font-family:var(--mono);font-size:15px;padding:0 4px;white-space:nowrap;}
-.domain-select{background:rgba(108,99,255,0.1);border:none;border-left:1px solid var(--border2);outline:none;padding:0.9rem 1rem;font-family:var(--mono);font-size:14px;color:var(--accent2);cursor:pointer;font-weight:600;}
-.domain-select option{background:var(--surface);color:var(--text);}
-.generate-btn{background:linear-gradient(135deg,var(--accent),#8b83ff);border:none;color:#fff;padding:0.9rem 1.25rem;cursor:pointer;font-family:var(--font);font-weight:700;font-size:14px;white-space:nowrap;transition:all 0.2s;}
-.generate-btn:hover{background:linear-gradient(135deg,#5a52e0,var(--accent));}
-
-.card-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-.email-display-row{display:flex;align-items:center;gap:12px;background:rgba(108,99,255,0.06);border:1px solid rgba(108,99,255,0.2);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1rem;}
+.card-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.email-display-row{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--border2);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1rem;}
 .email-icon{width:36px;height:36px;background:rgba(108,99,255,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-#emailAddress{font-family:var(--mono);font-size:16px;color:var(--accent2);flex:1;word-break:break-all;font-weight:600;}
-
+#emailAddress{font-family:var(--mono);font-size:16px;color:var(--text);flex:1;word-break:break-all;}
 .action-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all 0.2s;}
 .btn-primary{background:linear-gradient(135deg,var(--accent),#8b83ff);color:#fff;box-shadow:0 4px 20px rgba(108,99,255,0.35);}
 .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(108,99,255,0.5);}
-.btn-primary:active{transform:scale(0.97);}
 .btn-ghost{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
 .btn-ghost:hover{color:var(--text);border-color:var(--border2);}
 .copied-toast{display:none;align-items:center;gap:6px;padding:8px 14px;background:rgba(34,211,160,0.1);border:1px solid rgba(34,211,160,0.25);color:var(--success);border-radius:var(--radius-sm);font-size:13px;font-weight:600;}
 .copied-toast.show{display:inline-flex;}
 
-/* STATUS */
+/* STATUS BAR */
 .status-bar{display:flex;align-items:center;justify-content:space-between;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 16px;font-size:13px;color:var(--muted);margin:0 auto 1.5rem;max-width:760px;}
 .status-dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 6px var(--success);display:inline-block;margin-right:6px;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
 #timerDisplay{font-family:var(--mono);color:var(--warn);font-size:13px;}
 
 /* INBOX */
-.inbox-wrapper{max-width:760px;margin:0 auto;animation:cardIn 0.6s 0.1s cubic-bezier(0.16,1,0.3,1) both;}
+.inbox-wrapper{max-width:760px;margin:0 auto;}
 .inbox-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
-.inbox-title{font-size:18px;font-weight:700;letter-spacing:-0.01em;}
+.inbox-title{font-size:18px;font-weight:700;}
 .inbox-meta{display:flex;align-items:center;gap:10px;}
 .mail-count-badge{background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.25);color:var(--accent2);font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;}
 .refresh-btn{background:none;border:1px solid var(--border);color:var(--muted);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
 .refresh-btn:hover{color:var(--text);border-color:var(--border2);}
 .refresh-btn.loading{animation:spin 0.7s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
+
+/* INBOX LIST */
 .inbox-list{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:10px;padding:10px;}
-.inbox-empty-state{padding:4rem 2rem;text-align:center;color:#888;background:#f8f9fa;}
+.inbox-empty-state{padding:4rem 2rem;text-align:center;color:#888;background:#f8f9fa;border-radius:12px;}
 .inbox-empty-state .big-icon{font-size:48px;margin-bottom:16px;opacity:0.5;}
 .inbox-empty-state h3{font-size:16px;font-weight:600;color:#333;margin-bottom:6px;}
 .inbox-empty-state p{font-size:14px;}
 
-.mail-row{border-bottom:none;overflow:hidden;background:#fafafa;border-radius:10px;border:1px solid #e8e8e8;}
-.mail-row:last-child{border-bottom:none;}
+/* MAIL ROW */
+.mail-row{border-radius:10px;border:1px solid #e8e8e8;overflow:hidden;background:#fafafa;}
 .mail-row.new-mail{background:#e8f5e9;border-left:4px solid #22c55e;}
 .mail-row.new-mail .mail-from{color:#15803d;}
 .mail-row.new-mail .mail-subject{color:#166534;font-weight:600;}
 .mail-row.new-mail .mail-avatar{background:linear-gradient(135deg,#22c55e,#4ade80);box-shadow:0 0 14px rgba(34,197,94,0.4);}
 .new-badge{display:inline-block;background:#22c55e;color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;letter-spacing:0.05em;vertical-align:middle;animation:badgePulse 1.5s infinite;}
 @keyframes badgePulse{0%,100%{opacity:1;}50%{opacity:0.6;}}
-
 .mail-row-header{display:flex;align-items:center;gap:14px;padding:1rem 1.25rem;cursor:pointer;transition:background 0.15s;}
 .mail-row-header:hover{background:#f0f0f0;}
 .mail-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;text-transform:uppercase;}
@@ -124,6 +99,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1.25re
 .mail-subject{font-size:13px;color:#444;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .mail-chevron{color:#888;font-size:12px;transition:transform 0.2s;flex-shrink:0;}
 .mail-chevron.open{transform:rotate(90deg);}
+
+/* MAIL BODY */
 .mail-body-wrapper{display:none;border-top:1px solid #e8e8e8;background:#fff;}
 .mail-body-wrapper.open{display:block;animation:slideDown 0.2s ease;}
 @keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
@@ -139,29 +116,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1.25re
 .mail-body-content::-webkit-scrollbar-thumb{background:#ccc;border-radius:99px;}
 
 /* FEATURES */
-.features{max-width:760px;margin:3rem auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;}
+.features{max-width:760px;margin:3rem auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;padding-bottom:2rem;}
 .feat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;transition:border-color 0.2s;}
 .feat-card:hover{border-color:var(--border2);}
 .feat-icon{font-size:22px;margin-bottom:10px;}
 .feat-title{font-size:14px;font-weight:700;margin-bottom:4px;}
 .feat-desc{font-size:13px;color:var(--muted);line-height:1.5;}
 
-/* WHY US SECTION */
-.why-section{max-width:760px;margin:3rem auto 0;}
-.why-title{font-size:20px;font-weight:800;margin-bottom:1.25rem;letter-spacing:-0.01em;}
-.compare-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:16px;overflow:hidden;border:1px solid var(--border);}
-.compare-table th{padding:12px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);background:var(--surface2);border-bottom:1px solid var(--border);}
-.compare-table th.us{color:var(--accent2);}
-.compare-table td{padding:12px 16px;font-size:13px;border-bottom:1px solid var(--border);color:var(--muted);}
-.compare-table tr:last-child td{border-bottom:none;}
-.compare-table td:first-child{color:var(--text);font-weight:500;}
-.compare-table .yes{color:var(--success);font-weight:700;font-size:16px;}
-.compare-table .no{color:var(--danger);font-size:16px;}
-.compare-table .us-col{background:rgba(108,99,255,0.05);}
-.compare-table tr:hover td{background:rgba(255,255,255,0.02);}
-
 /* ABOUT */
-.about-section{max-width:760px;margin:2.5rem auto 0;padding:0 0 1rem;}
+.about-section{max-width:760px;margin:2rem auto 0;}
 .about-card{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;position:relative;overflow:hidden;}
 .about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
 .about-left{display:flex;align-items:center;gap:14px;}
@@ -171,34 +134,30 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1.25re
 .about-links{display:flex;flex-direction:column;gap:8px;}
 .about-link{display:flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:13px;font-family:var(--mono);transition:color 0.2s;padding:4px 10px;border-radius:6px;}
 .about-link:hover{color:var(--accent2);background:rgba(108,99,255,0.08);}
-.about-link-icon{font-size:15px;}
 
 /* FOOTER */
-footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);border-top:1px solid var(--border);margin-top:3rem;}
+footer{text-align:center;padding:2rem;font-size:13px;color:var(--muted);border-top:1px solid var(--border);margin-top:2rem;}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;max-width:760px;margin:0 auto;flex-wrap:wrap;gap:10px;}
 .footer-links{display:flex;gap:1.5rem;}
 .footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
 .footer-links a:hover{color:var(--text);}
 
-/* NOTIFICATION */
+/* NOTIF */
 .notif{position:fixed;bottom:1.5rem;right:1.5rem;padding:12px 20px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;display:none;z-index:1000;}
 .notif.show{display:block;animation:slideUp 0.3s ease;}
 .notif.success{background:rgba(34,211,160,0.1);border:1px solid rgba(34,211,160,0.3);color:var(--success);}
 .notif.error{background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.3);color:var(--danger);}
 @keyframes slideUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
+/* RESPONSIVE */
 @media(max-width:600px){
   nav{padding:1rem;} .nav-links{display:none;}
-  .trust-bar span{margin:0 0.75rem;font-size:12px;}
-  .hero{padding:2.5rem 1rem 2rem;} .hero h1{font-size:2rem;}
-  .email-card{margin:0 1rem 1.5rem;}
-  .inbox-wrapper{margin:0 1rem;}
-  .features,.why-section,.about-section{margin-left:1rem;margin-right:1rem;}
-  #emailAddress{font-size:13px;}
+  .hero{padding:3rem 1rem 2rem;} .hero h1{font-size:2rem;}
+  .email-card{margin:0 1rem 1.5rem;} .inbox-wrapper{margin:0 1rem;}
+  .features{margin:2rem 1rem 0;} #emailAddress{font-size:13px;}
+  .about-section{margin:1.5rem 1rem 0;}
   .about-card{flex-direction:column;padding:1.25rem;}
   .footer-inner{flex-direction:column;text-align:center;}
-  .username-row{flex-wrap:wrap;}
-  .compare-table th,.compare-table td{padding:8px 10px;font-size:12px;}
 }
 </style>
 </head>
@@ -212,45 +171,17 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);b
     <div class="logo"><div class="logo-icon">📬</div>Drop<span>Mail</span></div>
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
-      <li><a href="#why">Why Us</a></li>
+      <li><a href="#">Why Us</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Trust Bar -->
-  <div class="trust-bar">
-    <span>⚡ <strong>Instant</strong> — No Signup</span>
-    <span>🛡️ <strong>100%</strong> Anonymous</span>
-    <span>🚫 <strong>Anti-Spam</strong> Protection</span>
-    <span>📱 <strong>Mobile</strong> Friendly</span>
-    <span>🔔 <strong>Real-time</strong> Notifications</span>
-  </div>
-
   <div class="hero">
-    <div class="hero-badge">✦ Trusted by thousands daily</div>
-    <h1>Your Inbox,<br><span class="grad">Your Rules.</span></h1>
-    <p>Choose your own username. Pick your domain. Get real emails instantly — no registration, no spam, no tracking.</p>
-
-    <!-- Live Counters -->
-    <div class="live-counter">
-      <div class="counter-item">
-        <div class="counter-num" id="cntEmails">0</div>
-        <div class="counter-label">Emails Created Today</div>
-      </div>
-      <div class="counter-divider"></div>
-      <div class="counter-item">
-        <div class="counter-num" id="cntUsers">0</div>
-        <div class="counter-label">Active Users Now</div>
-      </div>
-      <div class="counter-divider"></div>
-      <div class="counter-item">
-        <div class="counter-num" id="cntBlocked">0</div>
-        <div class="counter-label">Spam Blocked</div>
-      </div>
-    </div>
+    <div class="hero-badge">✦ 100% Free & Anonymous</div>
+    <h1>Disposable Email,<br><span class="grad">Instantly.</span></h1>
+    <p>Real temporary inbox — no signup, no spam, no tracking. Use it and throw it away.</p>
   </div>
 
-  <!-- Email Generator Card -->
   <div class="email-card">
     <div class="card-label">Your temporary address</div>
     <div class="email-display-row">
@@ -275,7 +206,6 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);b
     <div id="timerDisplay">--:--</div>
   </div>
 
-  <!-- Inbox -->
   <div class="inbox-wrapper">
     <div class="inbox-header">
       <div class="inbox-title">📥 Inbox</div>
@@ -293,80 +223,26 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:13px;color:var(--muted);b
     </div>
   </div>
 
-  <!-- Features -->
   <div class="features">
-    <div class="feat-card"><div class="feat-icon">✏️</div><div class="feat-title">Custom Username</div><div class="feat-desc">Choose your own name — not just random gibberish.</div></div>
-    <div class="feat-card"><div class="feat-icon">🔔</div><div class="feat-title">Desktop Alerts</div><div class="feat-desc">Get notified the moment a new email arrives.</div></div>
+    <div class="feat-card"><div class="feat-icon">⚡</div><div class="feat-title">Instant Setup</div><div class="feat-desc">Email ready in milliseconds. No registration required.</div></div>
+    <div class="feat-card"><div class="feat-icon">🛡️</div><div class="feat-title">Privacy First</div><div class="feat-desc">No tracking, no logs. Your identity stays private.</div></div>
     <div class="feat-card"><div class="feat-icon">🔄</div><div class="feat-title">Auto Refresh</div><div class="feat-desc">Inbox checks every 5 seconds automatically.</div></div>
+    <div class="feat-card"><div class="feat-icon">🔔</div><div class="feat-title">Desktop Alerts</div><div class="feat-desc">Get notified the moment a new email arrives.</div></div>
   </div>
 
-  <!-- Why Us Comparison Table -->
-  <div class="why-section" id="why">
-    <div class="why-title">⚡ Why DropMail beats the rest</div>
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th class="us">DropMail ✦</th>
-          <th>Temp-Mail.org</th>
-          <th>Guerrilla Mail</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Custom Username</td>
-          <td class="yes us-col">✓</td>
-          <td class="no">✗</td>
-          <td class="no">✗</td>
-        </tr>
-        <tr>
-          <td>Desktop Notifications</td>
-          <td class="yes us-col">✓</td>
-          <td class="no">✗</td>
-          <td class="no">✗</td>
-        </tr>
-        <tr>
-          <td>Session Saved on Refresh</td>
-          <td class="yes us-col">✓</td>
-          <td class="no">✗</td>
-          <td class="no">✗</td>
-        </tr>
-        <tr>
-          <td>No Ads</td>
-          <td class="yes us-col">✓</td>
-          <td class="no">✗</td>
-          <td class="no">✗</td>
-        </tr>
-        <tr>
-          <td>Mobile Friendly</td>
-          <td class="yes us-col">✓</td>
-          <td class="yes">✓</td>
-          <td class="no">✗</td>
-        </tr>
-        <tr>
-          <td>100% Free</td>
-          <td class="yes us-col">✓</td>
-          <td class="yes">✓</td>
-          <td class="yes">✓</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- About -->
   <div class="about-section" id="contact">
     <div class="about-card">
       <div class="about-left">
         <div class="about-avatar">SA</div>
-        <div class="about-info">
+        <div>
           <div class="about-name">Safyan Ali</div>
           <div class="about-role">Developer & Creator of DropMail</div>
         </div>
       </div>
       <div class="about-links">
-        <a href="mailto:idevsufi@gmail.com" class="about-link"><span class="about-link-icon">✉️</span>idevsufi@gmail.com</a>
-        <a href="tel:+923044370410" class="about-link"><span class="about-link-icon">📞</span>+92 304 4370410</a>
-        <a href="https://mtechgrowth.com" target="_blank" class="about-link"><span class="about-link-icon">🌐</span>mtechgrowth.com</a>
+        <a href="mailto:idevsufi@gmail.com" class="about-link">✉️ idevsufi@gmail.com</a>
+        <a href="tel:+923044370410" class="about-link">📞 +92 304 4370410</a>
+        <a href="https://mtechgrowth.com" target="_blank" class="about-link">🌐 mtechgrowth.com</a>
       </div>
     </div>
   </div>
@@ -390,26 +266,7 @@ let sidToken = '', currentEmail = '', seqNum = 0;
 let mails = [], openStates = {}, mailData = {};
 let newMailIds = new Set();
 let autoTimer = null, countdownTimer = null, seconds = 3600;
-
-// ===== LIVE COUNTERS (simulated — realistic feel) =====
-function animateCounter(id, target, suffix='') {
-  let current = 0;
-  const step = Math.ceil(target / 60);
-  const timer = setInterval(() => {
-    current = Math.min(current + step, target);
-    document.getElementById(id).textContent = current.toLocaleString() + suffix;
-    if (current >= target) clearInterval(timer);
-  }, 20);
-}
-
-function initCounters() {
-  const base = new Date();
-  const dayStart = new Date(base.setHours(0,0,0,0));
-  const elapsed  = (Date.now() - dayStart) / (1000*60*60*24);
-  animateCounter('cntEmails', Math.floor(8400 * elapsed + 1200));
-  animateCounter('cntUsers',  Math.floor(Math.random() * 40 + 80));
-  animateCounter('cntBlocked', Math.floor(23000 * elapsed + 5000));
-}
+let currentOpenId = null; // currently open mail id
 
 // ===== SESSION =====
 function saveSession() {
@@ -418,29 +275,34 @@ function saveSession() {
 function loadSession() {
   try {
     const s = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
-    if (!s || !s.sidToken || !s.currentEmail || (Date.now()-s.savedAt) > 3600000) { localStorage.removeItem(STORE_KEY); return false; }
-    sidToken = s.sidToken; currentEmail = s.currentEmail; seqNum = s.seqNum||0; mails = s.mails||[];
-    seconds  = Math.max(0, 3600 - Math.floor((Date.now()-s.savedAt)/1000));
+    if (!s || !s.sidToken || !s.currentEmail) return false;
+    if ((Date.now() - s.savedAt) > 3600000) { localStorage.removeItem(STORE_KEY); return false; }
+    sidToken = s.sidToken; currentEmail = s.currentEmail;
+    seqNum = s.seqNum || 0; mails = s.mails || [];
+    seconds = Math.max(0, 3600 - Math.floor((Date.now() - s.savedAt) / 1000));
     return true;
   } catch(e) { return false; }
 }
 
-// ===== GENERATE EMAIL =====
+// ===== GENERATE NEW EMAIL =====
 async function generateNew() {
-  clearTimers(); mails=[]; openStates={}; mailData={}; newMailIds=new Set();
+  clearTimers();
+  mails = []; openStates = {}; mailData = {};
+  newMailIds = new Set(); currentOpenId = null;
   localStorage.removeItem(STORE_KEY);
   document.getElementById('emailAddress').textContent = '⏳ Generating...';
-  document.getElementById('statusText').textContent   = 'Connecting...';
+  document.getElementById('statusText').textContent = 'Connecting...';
   renderInbox([]);
   try {
     const d = await (await fetch(`${API_BASE}/api/email`)).json();
     currentEmail = d.email; sidToken = d.sid_token; seqNum = 0; seconds = 3600;
     document.getElementById('emailAddress').textContent = currentEmail;
-    document.getElementById('statusText').textContent   = 'Inbox active — auto-refreshing every 5s';
+    document.getElementById('statusText').textContent = 'Inbox active — checking every 5s';
     saveSession(); startCountdown(); startAutoRefresh();
     showNotif('✓ Inbox ready!', 'success');
   } catch(e) {
     document.getElementById('emailAddress').textContent = 'Error — please retry';
+    document.getElementById('statusText').textContent = 'Connection error';
     showNotif('❌ Connection failed, retry', 'error');
   }
 }
@@ -452,196 +314,224 @@ async function refreshInbox() {
   btn.classList.add('loading');
   try {
     const d = await (await fetch(`${API_BASE}/api/inbox?sid_token=${sidToken}&seq=${seqNum}`)).json();
-    if (d?.emails?.length) {
+    if (d && d.emails && d.emails.length) {
       let newIds = [];
       d.emails.forEach(m => {
-        if (!mails.find(x => x.mail_id===m.mail_id)) {
-          if ((m.mail_from||'').toLowerCase().includes('guerrillamail.com')) return;
-          mails.unshift(m); newIds.push(m.mail_id); newMailIds.add(m.mail_id);
-        }
+        if (mails.find(x => x.mail_id === m.mail_id)) return;
+        if ((m.mail_from || '').toLowerCase().includes('guerrillamail.com')) return;
+        mails.unshift(m);
+        newIds.push(m.mail_id);
+        newMailIds.add(m.mail_id);
       });
-      seqNum = d.count||seqNum;
-      renderInbox(mails); saveSession();
+      seqNum = d.count || seqNum;
+      renderInbox(mails);
+      saveSession();
       if (newIds.length) {
-        showNotif(`📬 ${newIds.length} new email${newIds.length>1?'s':''} received!`, 'success');
-        newIds.forEach(id => { const m=mails.find(x=>x.mail_id===id); if(m) sendDesktopNotif(m.mail_from||'Unknown', m.mail_subject||'(No subject)'); });
+        showNotif(`📬 ${newIds.length} new email${newIds.length > 1 ? 's' : ''}!`, 'success');
+        newIds.forEach(id => {
+          const m = mails.find(x => x.mail_id === id);
+          if (m) sendDesktopNotif(m.mail_from || 'Unknown', m.mail_subject || '(No subject)');
+        });
       }
     }
-  } catch(e){}
+  } catch(e) {}
   btn.classList.remove('loading');
 }
 
-// ===== OPEN / TOGGLE MAIL — ek waqt sirf ek open =====
-let currentOpenId = null;
-
+// ===== TOGGLE MAIL — one at a time =====
 function toggleMail(id) {
-  const bodyEl  = document.getElementById('body-' + id);
-  const chevron = document.getElementById('chev-' + id);
-  if (!bodyEl) return;
-
-  // Same mail click — band karo
+  // Same mail click — close it
   if (currentOpenId === id) {
-    bodyEl.classList.remove('open');
-    chevron && chevron.classList.remove('open');
+    const b = document.getElementById('body-' + id);
+    const c = document.getElementById('chev-' + id);
+    b && b.classList.remove('open');
+    c && c.classList.remove('open');
     currentOpenId = null;
     return;
   }
-
-  // Pehle wali band karo
+  // Close previous
   if (currentOpenId) {
-    const prevBody = document.getElementById('body-' + currentOpenId);
-    const prevChev = document.getElementById('chev-' + currentOpenId);
-    prevBody && prevBody.classList.remove('open');
-    prevChev && prevChev.classList.remove('open');
+    const pb = document.getElementById('body-' + currentOpenId);
+    const pc = document.getElementById('chev-' + currentOpenId);
+    pb && pb.classList.remove('open');
+    pc && pc.classList.remove('open');
   }
-
-  // Nai mail kholo
+  // Open new one
   currentOpenId = id;
   if (openStates[id] === 'loaded') {
-    bodyEl.classList.add('open');
-    chevron && chevron.classList.add('open');
+    // Already loaded — just show
+    const b = document.getElementById('body-' + id);
+    const c = document.getElementById('chev-' + id);
+    // Fill in cached data
+    const md = mailData[id];
+    if (md) {
+      b.querySelector('.meta-from').textContent    = md.from;
+      b.querySelector('.meta-subject').textContent = md.subject;
+      b.querySelector('.meta-date').textContent    = md.date;
+      b.querySelector('.mail-body-content').innerHTML = md.html;
+    }
+    b && b.classList.add('open');
+    c && c.classList.add('open');
   } else {
     loadMail(id);
   }
 }
 
-function closeAllMails() {
-  if (currentOpenId) {
-    const b = document.getElementById('body-' + currentOpenId);
-    const c = document.getElementById('chev-' + currentOpenId);
-    b && b.classList.remove('open');
-    c && c.classList.remove('open');
-    currentOpenId = null;
-  }
-}
+// ===== LOAD MAIL CONTENT =====
 async function loadMail(id) {
-  const bodyEl=document.getElementById('body-'+id), chevron=document.getElementById('chev-'+id);
-  if (!bodyEl) return;
-  bodyEl.classList.add('open'); chevron&&chevron.classList.add('open');
-  bodyEl.querySelector('.mail-body-content').innerHTML='<span style="color:var(--muted)">Loading...</span>';
-  openStates[id]='loading';
+  const b = document.getElementById('body-' + id);
+  const c = document.getElementById('chev-' + id);
+  if (!b) return;
+  b.classList.add('open');
+  c && c.classList.add('open');
+  b.querySelector('.mail-body-content').innerHTML = '<span style="color:#888">Loading...</span>';
+  openStates[id] = 'loading';
   try {
     const d = await (await fetch(`${API_BASE}/api/email/${id}?sid_token=${sidToken}`)).json();
-    const raw = d.body||'';
+    const raw = d.body || '';
     let html = '';
-    if (raw.trim().startsWith('<')||raw.includes('<a ')||raw.includes('<p>')) {
-      html = raw.replace(/<script[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<style[^>]*>[\s\S]*?<\/style>/gi,'')
-                .replace(/<a\s/gi,'<a target="_blank" rel="noopener noreferrer" ').replace(/\s(on\w+)="[^"]*"/gi,'');
+    if (raw.includes('<') && (raw.includes('</') || raw.includes('/>'))) {
+      html = raw
+        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+        .replace(/<a\s/gi, '<a target="_blank" rel="noopener noreferrer" ')
+        .replace(/\s(on\w+)="[^"]*"/gi, '');
     } else {
-      html = (d.body||'(Empty email)').replace(/(https?:\/\/[^\s]+)/g,'<a href="$1" target="_blank" rel="noopener noreferrer" style="color:var(--accent2);word-break:break-all;">$1</a>');
+      html = (d.body || '(Empty email)')
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
     }
-    mailData[id]={from:d.from||'',subject:d.subject||'',date:d.date||'',html};
+    // Cache
+    mailData[id] = { from: d.from || '', subject: d.subject || '', date: d.date || '', html };
+    openStates[id] = 'loaded';
+    // Remove NEW badge
     newMailIds.delete(id);
-    const row=document.getElementById('row-'+id);
-    if(row){row.classList.remove('new-mail');const b=row.querySelector('.new-badge');if(b)b.remove();}
-    bodyEl.querySelector('.meta-from').textContent    = d.from||'';
-    bodyEl.querySelector('.meta-subject').textContent = d.subject||'';
-    bodyEl.querySelector('.meta-date').textContent    = d.date||'';
-    bodyEl.querySelector('.mail-body-content').innerHTML = html||'(Empty email)';
-    openStates[id]='loaded';
-  } catch(e) { bodyEl.querySelector('.mail-body-content').textContent='Failed to load email.'; openStates[id]=''; }
+    const row = document.getElementById('row-' + id);
+    if (row) { row.classList.remove('new-mail'); const badge = row.querySelector('.new-badge'); badge && badge.remove(); }
+    // Fill data
+    b.querySelector('.meta-from').textContent    = d.from    || '';
+    b.querySelector('.meta-subject').textContent = d.subject || '';
+    b.querySelector('.meta-date').textContent    = d.date    || '';
+    b.querySelector('.mail-body-content').innerHTML = html || '(Empty email)';
+  } catch(e) {
+    b.querySelector('.mail-body-content').textContent = 'Failed to load. Please try again.';
+    openStates[id] = '';
+    currentOpenId = null;
+  }
 }
 
 // ===== RENDER INBOX =====
 function renderInbox(list) {
-  const el=document.getElementById('inboxList');
-  document.getElementById('mailCountBadge').textContent=list.length+' email'+(list.length!==1?'s':'');
-  if (!list.length) { el.innerHTML=`<div class="inbox-empty-state"><div class="big-icon">📭</div><h3>Waiting for emails...</h3><p>Copy your address above and use it anywhere</p></div>`; return; }
-  currentOpenId = null;
-  el.innerHTML=list.map(m=>{
-    const init=(m.mail_from||'?').substring(0,2).toUpperCase();
-    const isNew=newMailIds.has(m.mail_id);
-    return `<div class="mail-row ${isNew?'new-mail':''}" id="row-${m.mail_id}">
-      <div class="mail-row-header" onclick="toggleMail('${m.mail_id}')">
-        <div class="mail-avatar">${init}</div>
-        <div class="mail-info">
-          <div class="mail-from-line">
-            <span class="mail-from">${esc(m.mail_from||'Unknown')}${isNew?'<span class="new-badge">NEW</span>':''}</span>
-            <span class="mail-date">${esc(m.mail_date||'')}</span>
+  const el = document.getElementById('inboxList');
+  document.getElementById('mailCountBadge').textContent = list.length + ' email' + (list.length !== 1 ? 's' : '');
+  if (!list.length) {
+    el.innerHTML = `<div class="inbox-empty-state"><div class="big-icon">📭</div><h3>Waiting for emails...</h3><p>Copy your address above and use it anywhere</p></div>`;
+    return;
+  }
+  el.innerHTML = list.map(m => {
+    const init = (m.mail_from || '?').substring(0, 2).toUpperCase();
+    const isNew = newMailIds.has(m.mail_id);
+    return `
+      <div class="mail-row ${isNew ? 'new-mail' : ''}" id="row-${m.mail_id}">
+        <div class="mail-row-header" onclick="toggleMail('${m.mail_id}')">
+          <div class="mail-avatar">${init}</div>
+          <div class="mail-info">
+            <div class="mail-from-line">
+              <span class="mail-from">${esc(m.mail_from||'Unknown')}${isNew ? '<span class="new-badge">NEW</span>' : ''}</span>
+              <span class="mail-date">${esc(m.mail_date||'')}</span>
+            </div>
+            <div class="mail-subject">${esc(m.mail_subject||'(No subject)')}</div>
           </div>
-          <div class="mail-subject">${esc(m.mail_subject||'(No subject)')}</div>
+          <div class="mail-chevron" id="chev-${m.mail_id}">▶</div>
         </div>
-        <div class="mail-chevron" id="chev-${m.mail_id}">▶</div>
-      </div>
-      <div class="mail-body-wrapper" id="body-${m.mail_id}">
-        <div class="mail-body-inner">
-          <table class="mail-meta-table">
-            <tr><td>From</td><td class="meta-from"></td></tr>
-            <tr><td>Subject</td><td class="meta-subject"></td></tr>
-            <tr><td>Date</td><td class="meta-date"></td></tr>
-          </table>
-          <div class="mail-body-content">${isOpen&&mailData[m.mail_id]?mailData[m.mail_id].html:'Click to load...'}</div>
+        <div class="mail-body-wrapper" id="body-${m.mail_id}">
+          <div class="mail-body-inner">
+            <table class="mail-meta-table">
+              <tr><td>From</td><td class="meta-from"></td></tr>
+              <tr><td>Subject</td><td class="meta-subject"></td></tr>
+              <tr><td>Date</td><td class="meta-date"></td></tr>
+            </table>
+            <div class="mail-body-content">Click to load...</div>
+          </div>
         </div>
-      </div>
-    </div>`;
+      </div>`;
   }).join('');
 }
 
-// ===== COPY =====
+// ===== COPY EMAIL =====
 function copyEmail() {
   if (!currentEmail) return;
-  navigator.clipboard.writeText(currentEmail).catch(()=>{const t=document.createElement('textarea');t.value=currentEmail;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);});
-  const el=document.getElementById('copiedToast');
-  el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),2000);
+  navigator.clipboard.writeText(currentEmail).catch(() => {
+    const t = document.createElement('textarea');
+    t.value = currentEmail; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t);
+  });
+  const el = document.getElementById('copiedToast');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2000);
 }
 
-// ===== DESKTOP NOTIFICATIONS =====
-function requestNotifPermission() { if('Notification' in window&&Notification.permission==='default') Notification.requestPermission(); }
-function sendDesktopNotif(from,subject) {
-  if(!('Notification' in window)||Notification.permission!=='granted') return;
-  const n=new Notification('📬 DropMail — New Email!',{body:`From: ${from}\n${subject}`,tag:'dropmail-'+Date.now()});
-  n.onclick=()=>{window.focus();n.close();}; setTimeout(()=>n.close(),6000);
+// ===== DESKTOP NOTIFICATION =====
+function requestNotifPermission() {
+  if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission();
+}
+function sendDesktopNotif(from, subject) {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const n = new Notification('📬 DropMail — New Email!', { body: `From: ${from}\n${subject}` });
+  n.onclick = () => { window.focus(); n.close(); };
+  setTimeout(() => n.close(), 6000);
 }
 
-// ===== TIMER — sirf display, expire nahi hoga =====
+// ===== TIMER — silent renew after 1hr =====
 function startCountdown() {
-  if(countdownTimer) clearInterval(countdownTimer);
-  countdownTimer=setInterval(()=>{
+  if (countdownTimer) clearInterval(countdownTimer);
+  countdownTimer = setInterval(() => {
     seconds--;
-    const m=String(Math.floor(seconds/60)).padStart(2,'0'), s=String(seconds%60).padStart(2,'0');
-    document.getElementById('timerDisplay').textContent=m+':'+s;
-    // 1 hour baad silently renew karo — expire mat karo
-    if(seconds<=0){
-      clearInterval(countdownTimer);
-      silentRenew();
-    }
-  },1000);
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+    if (seconds <= 0) { clearInterval(countdownTimer); silentRenew(); }
+  }, 1000);
 }
-
-// Silent renew — user ko pata nahi chalega, same tab pe naya session
 async function silentRenew() {
   try {
-    const r = await fetch(`${API_BASE}/api/email`);
-    const d = await r.json();
-    // Purani mails raho, sirf token renew karo
-    sidToken   = d.sid_token;
-    seconds    = 3600;
-    seqNum     = 0;
-    saveSession();
-    startCountdown();
-    document.getElementById('statusText').textContent = 'Inbox renewed — auto-refreshing every 5s';
-  } catch(e) {
-    // Retry after 30s if failed
-    setTimeout(silentRenew, 30000);
-  }
+    const d = await (await fetch(`${API_BASE}/api/email`)).json();
+    sidToken = d.sid_token; seqNum = 0; seconds = 3600;
+    saveSession(); startCountdown();
+  } catch(e) { setTimeout(silentRenew, 30000); }
 }
 
-// Fast refresh — har 5 second mein check
-function startAutoRefresh() { if(autoTimer)clearInterval(autoTimer); autoTimer=setInterval(refreshInbox,5000); setTimeout(refreshInbox,500); }
-function clearTimers() { if(autoTimer)clearInterval(autoTimer); if(countdownTimer)clearInterval(countdownTimer); }
-function showNotif(msg,type) { const el=document.getElementById('notif'); el.textContent=msg; el.className='notif show '+type; setTimeout(()=>el.classList.remove('show'),3000); }
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+// ===== AUTO REFRESH =====
+function startAutoRefresh() {
+  if (autoTimer) clearInterval(autoTimer);
+  autoTimer = setInterval(refreshInbox, 5000);
+  setTimeout(refreshInbox, 500);
+}
+function clearTimers() {
+  if (autoTimer) clearInterval(autoTimer);
+  if (countdownTimer) clearInterval(countdownTimer);
+}
+
+// ===== HELPERS =====
+function showNotif(msg, type) {
+  const el = document.getElementById('notif');
+  el.textContent = msg; el.className = 'notif show ' + type;
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 // ===== INIT =====
-window.addEventListener('DOMContentLoaded',()=>{
-  initCounters();
+window.addEventListener('DOMContentLoaded', () => {
   requestNotifPermission();
-  if(loadSession()){
-    document.getElementById('emailAddress').textContent=currentEmail;
-    document.getElementById('statusText').textContent='Inbox restored — auto-refreshing every 5s';
-    renderInbox(mails); startCountdown(); startAutoRefresh();
-    showNotif('✓ Previous inbox restored!','success');
-  } else { generateNew(); }
+  if (loadSession()) {
+    document.getElementById('emailAddress').textContent = currentEmail;
+    document.getElementById('statusText').textContent = 'Inbox restored — checking every 5s';
+    renderInbox(mails);
+    startCountdown();
+    startAutoRefresh();
+    showNotif('✓ Previous inbox restored!', 'success');
+  } else {
+    generateNew();
+  }
 });
 </script>
 </body>
